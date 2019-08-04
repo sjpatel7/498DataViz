@@ -1,18 +1,27 @@
-<html>
+<!DOCTYPE html>
 <script src='https://d3js.org/d3.v5.min.js'>
-</script>
-<body onload='init()'>
+
+<style> .chart rect { fill: steelblue } </style>
+
+<html><body>
+<p> here are some numbers </p>
+
+<svg class="chart" width="120" height="500">
+</svg>
+
 <script>
-async function init() {
-	const data = await d3.csv('https://flunky.github.io/data.csv');
-	d3.select('body')
-		.selectAll('p')
-		.data(data)
-		.enter()
-		.append('p')
-			.html(function(d,i) {return 'item' +
-				d.item + ' is ' + d.number + '.'; });
-}
+var data = [4,8,15,16,23,42];
+document.getElementById("data").innerHTML = data;
+d3.select(".chart")
+	.selectALL("rect")
+	.data(data)
+	.enter().append("rect")
+	.attr("width",19)
+	.attr("x",function(d,i) {return 20*i;})
+	.attr("y",400)
+	.transition().duration(3000).delay(1000)
+	.attr("height",function(d) {return 10 * d;})
+	.attr("y",function(d) {return 420-10*d;} );
 </script>
-</body>
-</html>
+
+</body></html>
