@@ -32,7 +32,7 @@
             d3.select("#chart").call(lines);
         }
 
-        d3.csv("data.csv", function (data) {
+        d3.csv("https://raw.githubusercontent.com/sjpatel7/498DataViz/master/data.csv", function (data) {
             d3.select("#chart").datum(data).call(lines);
             d3.select(window).on('resize', resize);
             resize();
