@@ -22,8 +22,8 @@ d3.select('svg').append('g')
 	tooltip.style("opacity",1)
 	.style("left",(d3.event.pageX)+"px")
 	.style("top",(d3.event.pageY)+"px")
-	.html("Item #"+i+" is "+d);
-});
+	.html("Item #"+i+" is "+d);})
+.on("mouseout", function() {tooltip.style("opacity", 0) })
     
 d3.select("svg").append("g")
 .attr("transform", "translate(50,50)")
