@@ -66,13 +66,13 @@ d3.select("svg").append("g")
 function approval() {
 d3.select('svg').select("#bothR")
   .selectAll("rect")
-  .transition().duration(2000).delay(250)
+  .transition().duration(1000)
   .attr("y", 200)
   .attr("height", 0);
   
  d3.select('svg').select("#bothG")
   .selectAll("rect")
-  .transition().duration(2000).delay(250)
+  .transition().duration(1000)
   .attr("y", 200)
   .attr("height", 0);
   
@@ -90,13 +90,13 @@ d3.select('svg').select("#single")
 function wrong() {
 d3.select('svg').select("#bothR")
   .selectAll("rect")
-  .transition().duration(2000).delay(250)
+  .transition().duration(1000)
   .attr("y", 200)
   .attr("height", 0);
   
  d3.select('svg').select("#bothG")
   .selectAll("rect")
-  .transition().duration(2000).delay(250)
+  .transition().duration(1000)
   .attr("y", 200)
   .attr("height", 0);
   
@@ -113,7 +113,7 @@ d3.select('svg').select("#single")
 function both() {
 d3.select('svg').select("#single")
 .selectAll("rect")
-.transition().duration(2000).delay(250)
+.transition().duration(1000)
 .attr("y", 200)
 .attr("height", function(d,i) {return 0;});
 
