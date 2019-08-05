@@ -1,43 +1,35 @@
-<!DOCTYPE html>
 <html>
-<head>
-    <title>Line Chart Transition</title>
-    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
-    <meta charset='utf-8' />
-    <script src="https://d3js.org/d3.v4.min.js"></script>
-    <style>
-        body {
-            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-        }
-    
-        #chart {
-            max-width: 600px;
-            max-height: 400px;
-        }
-    </style>
-</head>
-
+<script src='https://d3js.org/d3.v5.min.js'></script>
+<style> rect {fill: lightblue; stroke: black; }</style>
 <body>
-    <div id="chart"></div>
-    <script src="script.js"></script>
-    <script>
-        var lines = timelineChart();
+<svg width=300 height=300>
+</svg>
+<script>
+var data = [4,8,15,16,23,42];
+var x = d3.scaleBand().domain([0,1,2,3,4,5]).range([0,200]);
+var y = d3.scaleLinear().domain([0,42]).range([200,0]);
 
-        function resize() {
-            if (d3.select("#chart svg").empty()) {
-                return;
-            }
-            lines.width(+d3.select("#chart").style("width").replace(/(px)/g, ""))
-                .height(+d3.select("#chart").style("height").replace(/(px)/g, ""));
-            d3.select("#chart").call(lines);
-        }
+d3.select('svg').append('g')
+.attr("transform","translate(50,50)")
+.selectAll("rect").data(data).enter().append("rect")
+.attr("x", function(d,i) {return x(i);})
+.attr("y", function(d,i) {return 200;})
+.attr("width", x.bandwidth)
+.attr("height", function(d,i) {return 0;})
+.transition().duration(2000).delay(250)
+.attr("x", function(d,i) {return x(i);})
+.attr("y", function(d,i) {return y(d);})
+.attr("width", x.bandwidth)
+.attr("height", function(d,i) {return 200 - y(d);});
 
-        d3.csv("https://raw.githubusercontent.com/sjpatel7/498DataViz/master/data.csv", function (data) {
-            d3.select("#chart").datum(data).call(lines);
-            d3.select(window).on('resize', resize);
-            resize();
-        });
-    </script>
+d3.select("svg").append("g")
+.attr("transform", "translate(50,50)")
+.call(d3.axisLeft(y));
+
+d3.select("svg").append("g")
+.attr("transform", "translate(50,250)")
+.call(d3.axisBottom(x));
+
+</script>
 </body>
-
 </html>
