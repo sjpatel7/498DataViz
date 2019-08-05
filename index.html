@@ -64,7 +64,18 @@ d3.select("svg").append("g")
 
 
 function approval() {
-
+d3.select('svg').select("#bothR")
+  .selectAll("rect")
+  .transition().duration(2000).delay(250)
+  .attr("y", 200)
+  .attr("height", 0);
+  
+ d3.select('svg').select("#bothG")
+  .selectAll("rect")
+  .transition().duration(2000).delay(250)
+  .attr("y", 200)
+  .attr("height", 0);
+  
 d3.select('svg').select("#single")
 .selectAll("rect")
 .transition().duration(2000).delay(250)
@@ -77,7 +88,18 @@ d3.select('svg').select("#single")
 }
 
 function wrong() {
-
+d3.select('svg').select("#bothR")
+  .selectAll("rect")
+  .transition().duration(2000).delay(250)
+  .attr("y", 200)
+  .attr("height", 0);
+  
+ d3.select('svg').select("#bothG")
+  .selectAll("rect")
+  .transition().duration(2000).delay(250)
+  .attr("y", 200)
+  .attr("height", 0);
+  
 d3.select('svg').select("#single")
 .selectAll("rect")
 .transition().duration(2000).delay(250)
@@ -114,12 +136,10 @@ d3.select('svg').select("#bothR")
 <p>Red represents the disapproval rating and green represents the approval rating of the 2016 Brexit Referendum decision. <br>
   The y-axis represents percentage of surveyed people, and the x-axis corresponds to months since 08/2016. </p>
   
-  <h4>Project Note</h4>
-<p>
+  <h4>Project Note:</h4>
   I ran out of time to display this visualization in the format of an interactive slideshow. I intended for there to be three <br>
   scenes corresponding to 3 notable events in news related to brexit. I also tried to implement tooltips which displayed the date
   and percentage data for each bar, as well as links relevant news articles from <a href="https://www.politico.eu/pro/brexit-timeline-from-referendum-to-eu-exit-archive-2016/">this brexit timeline</a>. <br>
   I was having trouble displaying the tooltips in github pages.
-</p>
 </body>
 </html>
