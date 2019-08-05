@@ -78,7 +78,7 @@ d3.select('svg').select("#bothR")
   
 d3.select('svg').select("#single")
 .selectAll("rect")
-.transition().duration(2000).delay(250)
+.transition().duration(1500).delay(500)
 .attr("x", function(d,i) {return x(i);})
 .attr("y", function(d,i) {return y(d.right);})
 .attr("width", x.bandwidth)
@@ -102,7 +102,7 @@ d3.select('svg').select("#bothR")
   
 d3.select('svg').select("#single")
 .selectAll("rect")
-.transition().duration(2000).delay(250)
+.transition().duration(1500).delay(500)
 .attr("x", function(d,i) {return x(i);})
 .attr("y", function(d,i) {return y(d.wrong);})
 .attr("width", x.bandwidth)
@@ -119,13 +119,13 @@ d3.select('svg').select("#single")
 
 d3.select('svg').select("#bothG")
 .selectAll("rect")
-.transition().duration(2000).delay(250)
+.transition().duration(1500).delay(500)
 .attr("y", function(d,i) {return y(d.right);})
 .attr("height", function(d,i) {return 200 - y(d.right);});
 
 d3.select('svg').select("#bothR")
 .selectAll("rect")
-.transition().duration(2000).delay(250)
+.transition().duration(1500).delay(500)
 .attr("y", function(d,i) {return y(d.wrong);})
 .attr("height", function(d,i) {return 200 - y(d.wrong);});
 }
