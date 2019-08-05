@@ -3,7 +3,7 @@
 <style> rect {fill: lightblue; stroke: black; }</style>
 </script>
 <body onload='approval()'>
-<svg width=500 height=300>
+<svg width=1500 height=300>
 </svg>
 <button onclick="approval()">
 Brexit Approval
@@ -21,7 +21,7 @@ Both
 async function approval() {
 	var data = await d3.csv('https://raw.githubusercontent.com/sjpatel7/498DataViz/master/data2.csv');
 
-var x = d3.scaleBand().domain([0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25]).range([0,500]);
+var x = d3.scaleBand().domain([0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25]).range([0,1000]);
 var y = d3.scaleLinear().domain([40,50]).range([200,0]);
 
 d3.select('svg').append('g')
@@ -50,7 +50,7 @@ d3.select("svg").append("g")
 async function wrong() {
 	var data = await d3.csv('https://raw.githubusercontent.com/sjpatel7/498DataViz/master/data2.csv');
 
-var x = d3.scaleBand().domain([0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25]).range([0,500]);
+var x = d3.scaleBand().domain([0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25]).range([0,1000]);
 var y = d3.scaleLinear().domain([40,50]).range([200,0]);
 
 d3.select('svg').append('g')
