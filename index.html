@@ -1,54 +1,35 @@
-<!DOCTYPE html>
-<script src="http://d3js.org/d3.v4.min.js"></script>
-
-<style>
-.chart rect { fill: steelblue; }
-#tooltip {
-    opacity: 0;
-    position: absolute;
-    text-align: center;
-    width: 60px; height: 40px;
-    background: white;
-    border: 0px;
-}
-</style>
-
-<html><body>
-<p>Here are the magic numbers from Lost: <span id="data"></span></p>
-
-<svg class="chart"></svg>
-
-<div id="tooltip"></div>
-
+<html>
+<script src='https://d3js.org/d3.v5.min.js'></script>
+<style> rect {fill: lightblue; stroke: black; }</style>
+<body>
+<svg width=300 height=300>
+</svg>
 <script>
-var width = 120, height = 300;
-
 var data = [4,8,15,16,23,42];
-document.getElementById("data").innerHTML = data;
+var x = d3.scaleBand().domain([0,1,2,3,4,5]).range([0,200]);
+var y = d3.scaleLinear().domain([0,42]).range([200,0]);
 
-var x = d3.scaleLinear().domain([0,6]).range([0,width]);
-var y = d3.scaleLinear().domain([0,42]).range([height,0]);
+d3.select('svg').append('g')
+.attr("transform","translate(50,50)")
+.selectAll("rect").data(data).enter().append("rect")
+.attr("x", function(d,i) {return x(i);})
+.attr("y", function(d,i) {return 200;})
+.attr("width", x.bandwidth)
+.attr("height", function(d,i) {return 0;})
+.transition().duration(2000).delay(250)
+.attr("x", function(d,i) {return x(i);})
+.attr("y", function(d,i) {return y(d);})
+.attr("width", x.bandwidth)
+.attr("height", function(d,i) {return 200 - y(d);});
 
-var tooltip = d3.select("#tooltip");
+d3.select("svg").append("g")
+.attr("transform", "translate(50,50)")
+.call(d3.axisLeft(y));
 
-d3.select(".chart")
-    .attr("width",width)
-    .attr("height",height)
-    .selectAll("rect")
-    .data(data)
-    .enter().append("rect")
-    .attr("width",19)
-    .attr("height",function(d) { return height - y(d); })
-    .attr("x",function(d,i) { return x(i); })
-    .attr("y",function(d) { return y(d); })
-    .on("mouseover", function(d,i) {
-        tooltip.style("opacity", 1)
-               .style("left",(d3.event.pageX)+"px")
-               .style("top",(d3.event.pageY)+"px")
-               .html("Item #"+i+" is "+d);
-    })
-    .on("mouseout", function() { tooltip.style("opacity", 0) })
+d3.select("svg").append("g")
+.attr("transform", "translate(50,250)")
+.call(d3.axisBottom(x));
 
 </script>
-
-</body></html>
+</body>
+</html>
